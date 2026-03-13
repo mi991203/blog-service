@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.blog.user.mapper.AppUserMapper">
+
+    <resultMap id="BaseResultMap" type="com.blog.user.entity.AppUser">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="mobile" property="mobile" jdbcType="VARCHAR"/>
+        <result column="nickname" property="nickname" jdbcType="VARCHAR"/>
+        <result column="face" property="face" jdbcType="VARCHAR"/>
+        <result column="realname" property="realname" jdbcType="VARCHAR"/>
+        <result column="email" property="email" jdbcType="VARCHAR"/>
+        <result column="sex" property="sex" jdbcType="INTEGER"/>
+        <result column="birthday" property="birthday" jdbcType="TIMESTAMP"/>
+        <result column="province" property="province" jdbcType="VARCHAR"/>
+        <result column="city" property="city" jdbcType="VARCHAR"/>
+        <result column="district" property="district" jdbcType="VARCHAR"/>
+        <result column="active_status" property="activeStatus" jdbcType="INTEGER"/>
+        <result column="total_income" property="totalIncome" jdbcType="INTEGER"/>
+        <result column="created_time" property="createdTime" jdbcType="TIMESTAMP"/>
+        <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, mobile, nickname, face, realname, email, sex, birthday, province, city, district, active_status, total_income, created_time, updated_time
+    </sql>
+
+    <!-- 根据ID查询用户 -->
+    <select id="selectById" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+        FROM app_user
+        WHERE id = #{id}
+    </select>
+
+    <!-- 根据用户名查询用户 -->
+    <select id="selectByUsername" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+        FROM app_user
+        WHERE nickname = #{username}
+    </select>
+    <!-- 根据手机号查询用户 -->
+    <select id="selectByMobile" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+        FROM app_user
+        WHERE mobile = #{mobile}
+    </select>
+    <!-- 插入用户 -->
+    <insert id="insert" parameterType="com.blog.user.entity.AppUser"
+            useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO app_user (mobile, nickname, realname, active_status, total_income)
+        VALUES (#{mobile}, #{nickname}, #{realname}, #{activeStatus}, #{totalIncome})
+    </insert>
+
+    <!-- 更新用户 -->
+    <update id="updateById" parameterType="com.blog.user.entity.AppUser">
+        UPDATE app_user
+        <set>
+            <if test="mobile != null">mobile = #{mobile},</if>
+            <if test="nickname != null">nickname = #{nickname},</if>
+            <if test="face != null">face = #{face},</if>
+            <if test="realname != null">realname = #{realname},</if>
+            <if test="email != null">email = #{email},</if>
+            <if test="sex != null">sex = #{sex},</if>
+            <if test="birthday != null">birthday = #{birthday},</if>
+            <if test="province != null">province = #{province},</if>
+            <if test="city != null">city = #{city},</if>
+            <if test="district != null">district = #{district},</if>
+            <if test="activeStatus != null">active_status = #{activeStatus},</if>
+            <if test="totalIncome != null">total_income = #{totalIncome},</if>
+            <if test="updatedTime != null">updated_time = #{updatedTime},</if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <!-- 根据ID删除用户 -->
+    <delete id="deleteById">
+        DELETE FROM app_user WHERE id = #{id}
+    </delete>
+
+</mapper>
