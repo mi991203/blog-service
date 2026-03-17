@@ -2,6 +2,8 @@ package com.blog.api.controller;
 
 import com.blog.common.result.Result;
 import com.blog.user.dto.LikeDto;
+import com.blog.user.service.ArticleFavoriteService;
+
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -20,7 +22,7 @@ public class ArticleHandleController {
     @Resource
     private ArticleFavoriteService articleFavoriteService;
     @Resource
-    private likeArticleService likeArticleService;
+    private LikeArticleService likeArticleService;
 
     /**
      * 点赞取消文章
