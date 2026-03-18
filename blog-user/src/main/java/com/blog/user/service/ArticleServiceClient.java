@@ -1,6 +1,8 @@
 package com.blog.user.service;
 
 import com.blog.user.dto.FavoriteCountDto;
+import com.blog.user.dto.LikeCountDto;
+
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
@@ -39,6 +41,27 @@ public class ArticleServiceClient {
             log.info("文章收藏数处理结果: {}", result);
         } catch (Exception e) {
             log.error("调用article服务处理文章收藏数失败", e);
+        }
+    }
+
+    /**
+     * 增加文章点赞数
+     *
+     * @param likeCountDto 文章ID
+     */
+    public void handleLikeCount(LikeCountDto likeCountDto) {
+        try {
+            Mono<String> response = webClient.post()
+                    .uri("/article/comment/like/handle")
+                    .accept(MediaType.APPLICATION_JSON)
+                    .body(Mono.just(likeCountDto), LikeCountDto.class)
+                    .retrieve()
+                    .bodyToMono(String.class);
+
+            String result = response.block();
+            log.info("文章点赞数处理结果: {}", result);
+        } catch (Exception e) {
+            log.error("调用article服务处理文章点赞数失败", e);
         }
     }
 }

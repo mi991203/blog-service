@@ -1,5 +1,7 @@
 package com.blog.user.service.impl;
 
+import java.util.Date;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -7,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.blog.user.dto.LikeCountDto;
 import com.blog.user.entity.ArticleLike;
 import com.blog.user.mapper.ArticleLikeMapper;
+import com.blog.user.service.ArticleServiceClient;
 import com.blog.user.service.LikeArticleService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -16,6 +19,8 @@ import lombok.extern.slf4j.Slf4j;
 public class LikeArticleServiceImpl implements LikeArticleService {
     @Resource
     private ArticleLikeMapper articleLikeMapper;
+    @Resource
+    private ArticleServiceClient articleServiceClient;
 
     @Override
     public boolean likeArticle(Long userId, Long articleId, int num) {

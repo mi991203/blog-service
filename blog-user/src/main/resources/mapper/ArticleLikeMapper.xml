@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.blog.user.mapper.ArticleLikeMapper">
+    <resultMap id="ArticleLikeResultMap" type="com.blog.user.entity.ArticleLike">
+        <id property="id" column="id"/>
+        <result property="articleId" column="article_id"/>
+        <result property="userId" column="user_id"/>
+        <result property="createTime" column="create_time"/>
+    </resultMap>
+
+    <insert id="insert">
+        insert into article_like (user_id, article_id, create_time) values (#{userId}, #{articleId}, #{createTime})
+    </insert>
+
+    <delete id="deleteByUserAndArticle">
+        delete from article_like where user_id = #{userId} and article_id = #{articleId}
+    </delete>
+
+    <select id="selectByUserAndArticle" resultMap="ArticleLikeResultMap">
+        select id, user_id, article_id, create_time from article_like where user_id = #{userId} and article_id = #{articleId}
+    </select>
+
+    <select id="countByArticleId" resultType="int">
+        SELECT COUNT(1) FROM article_like WHERE article_id = #{articleId}
+    </select>
+</mapper>

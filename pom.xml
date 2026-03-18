@@ -15,6 +15,7 @@
         <module>blog-user</module>
         <module>blog-api</module>
         <module>blog-common</module>
+        <module>blog-article</module>
     </modules>
 
     <parent>
@@ -49,6 +50,11 @@
             <dependency>
                 <groupId>com.blog</groupId>
                 <artifactId>blog-user</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.blog</groupId>
+                <artifactId>blog-article</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <!-- MyBatis -->

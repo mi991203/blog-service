@@ -3,6 +3,7 @@ package com.blog.api.controller;
 import com.blog.common.result.Result;
 import com.blog.user.dto.LikeDto;
 import com.blog.user.service.ArticleFavoriteService;
+import com.blog.user.service.LikeArticleService;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -17,7 +18,7 @@ import javax.annotation.Resource;
 @Slf4j
 @RestController
 @RequestMapping("/api/article")
-@Api(tags = "文章点赞/收藏", description = "文章点赞/收藏接口，需要用户登录")
+@Api(tags = "文章点赞/收藏/取消点赞")
 public class ArticleHandleController {
     @Resource
     private ArticleFavoriteService articleFavoriteService;
