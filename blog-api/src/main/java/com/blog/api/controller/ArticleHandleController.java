@@ -1,7 +1,7 @@
 package com.blog.api.controller;
 
+import com.blog.article.dto.LikeDto;
 import com.blog.common.result.Result;
-import com.blog.user.dto.LikeDto;
 import com.blog.user.service.ArticleFavoriteService;
 import com.blog.user.service.LikeArticleService;
 

@@ -1,7 +1,7 @@
 package com.blog.user.service;
 
+import com.blog.article.dto.LikeCountDto;
 import com.blog.user.dto.FavoriteCountDto;
-import com.blog.user.dto.LikeCountDto;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;

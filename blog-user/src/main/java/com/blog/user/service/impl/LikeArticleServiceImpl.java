@@ -6,7 +6,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.blog.user.dto.LikeCountDto;
+import com.blog.article.dto.LikeCountDto;
 import com.blog.user.entity.ArticleLike;
 import com.blog.user.mapper.ArticleLikeMapper;
 import com.blog.user.service.ArticleServiceClient;
