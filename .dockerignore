@@ -1,0 +1,8 @@
+.git
+.idea
+.vscode
+**/target
+**/logs
+README.md
+springboot_run_in_cursor.md
+blog-api-mvn-start.md
