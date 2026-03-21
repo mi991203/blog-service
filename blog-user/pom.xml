@@ -20,6 +20,12 @@
     </properties>
 
     <dependencies>
+        <!-- 内部模块依赖-->
+        <dependency>
+            <groupId>com.blog</groupId>
+            <artifactId>blog-article</artifactId>
+        </dependency>
+
         <!-- Spring Boot -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

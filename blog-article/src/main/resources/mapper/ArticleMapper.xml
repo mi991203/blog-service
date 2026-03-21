@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.blog.article.mapper.ArticleMapper">
+    <insert id="insert" parameterType="com.blog.article.entity.Article" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO article (
+            title, content, category_id, article_cover,
+            read_counts, comment_counts, is_delete, create_time, 
+            update_time, is_hot, is_top, like_count, favorite_count
+        ) VALUES (
+            #{title}, #{content}, #{categoryId}, #{articleCover},
+            #{readCounts}, #{commentCounts}, #{isDelete}, #{createTime},
+            #{updateTime}, #{isHot}, #{isTop},#{likeCount}, #{favoriteCount}
+        )
+    </insert>
+
+    <update id="handleLikeCount">
+        UPDATE article
+        SET like_count = #{likeCount}
+        WHERE id = #{id} AND is_delete = 0
+    </update>
+</mapper>
